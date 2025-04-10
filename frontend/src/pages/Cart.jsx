@@ -1,183 +1,94 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import {
-    Container,
-    Typography,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-    IconButton,
-    Button,
-    Box,
-    CircularProgress,
-    Alert,
-} from '@mui/material';
-import { Add as AddIcon, Remove as RemoveIcon, Delete as DeleteIcon } from '@mui/icons-material';
-import {
-    fetchCart,
-    updateCartItem,
-    removeFromCart,
-    clearCart,
-} from '../store/slices/cartSlice';
+  addToCart,
+  decreaseQty,
+  deleteProduct,
+} from "../app/features/cart/cartSlice";
 
 const Cart = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { items, isLoading, error } = useSelector((state) => state.cart);
-
-    useEffect(() => {
-        dispatch(fetchCart());
-    }, [dispatch]);
-
-    const handleQuantityChange = (itemId, currentQuantity, change) => {
-        const newQuantity = currentQuantity + change;
-        if (newQuantity > 0) {
-            dispatch(updateCartItem({ cartItemId: itemId, quantity: newQuantity }));
-        } else {
-            dispatch(removeFromCart(itemId));
-        }
-    };
-
-    const handleRemoveItem = (itemId) => {
-        dispatch(removeFromCart(itemId));
-    };
-
-    const handleClearCart = () => {
-        dispatch(clearCart());
-    };
-
-    const handleCheckout = () => {
-        navigate('/checkout');
-    };
-
-    const calculateTotal = () => {
-        return items.reduce((total, item) => total + item.price * item.quantity, 0);
-    };
-
-    if (isLoading) {
-        return (
-            <Container sx={{ mt: 4, textAlign: 'center' }}>
-                <CircularProgress />
-            </Container>
-        );
-    }
-
-    if (error) {
-        return (
-            <Container sx={{ mt: 4 }}>
-                <Alert severity="error">{error}</Alert>
-            </Container>
-        );
-    }
-
-    if (items.length === 0) {
-        return (
-            <Container sx={{ mt: 4 }}>
-                <Typography variant="h5" align="center">
-                    Your cart is empty
-                </Typography>
-            </Container>
-        );
-    }
-
-    return (
-        <Container>
-            <Typography variant="h4" gutterBottom>
-                Shopping Cart
-            </Typography>
-
-            <TableContainer component={Paper}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Product</TableCell>
-                            <TableCell align="right">Price</TableCell>
-                            <TableCell align="center">Quantity</TableCell>
-                            <TableCell align="right">Total</TableCell>
-                            <TableCell align="center">Actions</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {items.map((item) => (
-                            <TableRow key={item.id}>
-                                <TableCell>{item.name}</TableCell>
-                                <TableCell align="right">${item.price.toFixed(2)}</TableCell>
-                                <TableCell align="center">
-                                    <IconButton
-                                        size="small"
-                                        onClick={() =>
-                                            handleQuantityChange(item.id, item.quantity, -1)
-                                        }
-                                    >
-                                        <RemoveIcon />
-                                    </IconButton>
-                                    <Typography
-                                        component="span"
-                                        sx={{ mx: 2 }}
-                                    >
-                                        {item.quantity}
-                                    </Typography>
-                                    <IconButton
-                                        size="small"
-                                        onClick={() =>
-                                            handleQuantityChange(item.id, item.quantity, 1)
-                                        }
-                                    >
-                                        <AddIcon />
-                                    </IconButton>
-                                </TableCell>
-                                <TableCell align="right">
-                                    ${(item.price * item.quantity).toFixed(2)}
-                                </TableCell>
-                                <TableCell align="center">
-                                    <IconButton
-                                        color="error"
-                                        onClick={() => handleRemoveItem(item.id)}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-
-            <Box
-                sx={{
-                    mt: 4,
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                }}
-            >
-                <Button
-                    variant="outlined"
-                    color="error"
-                    onClick={handleClearCart}
-                >
-                    Clear Cart
-                </Button>
-                <Box>
-                    <Typography variant="h6" component="span" sx={{ mr: 4 }}>
-                        Total: ${calculateTotal().toFixed(2)}
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleCheckout}
+  const { cartList } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  // middlware to localStorage
+  const totalPrice = cartList.reduce(
+    (price, item) => price + item.qty * item.price,
+    0
+  );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // if(CartItem.length ===0) {
+    //   const storedCart = localStorage.getItem("cartItem");
+    //   setCartItem(JSON.parse(storedCart));
+    // }
+  }, []);
+  return (
+    <section className="cart-items">
+      <Container>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            {cartList.length === 0 && (
+              <h1 className="no-items product">No Items are add in Cart</h1>
+            )}
+            {cartList.map((item) => {
+              const productQty = item.price * item.qty;
+              return (
+                <div className="cart-list" key={item.id}>
+                  <Row>
+                    <Col className="image-holder" sm={4} md={3}>
+                      <img src={item.imgUrl} alt="" />
+                    </Col>
+                    <Col sm={8} md={9}>
+                      <Row className="cart-content justify-content-center">
+                        <Col xs={12} sm={9} className="cart-details">
+                          <h3>{item.productName}</h3>
+                          <h4>
+                            ${item.price}.00 * {item.qty}
+                            <span>${productQty}.00</span>
+                          </h4>
+                        </Col>
+                        <Col xs={12} sm={3} className="cartControl">
+                          <button
+                            className="incCart"
+                            onClick={() =>
+                              dispatch(addToCart({ product: item, num: 1 }))
+                            }
+                          >
+                            <i className="fa-solid fa-plus"></i>
+                          </button>
+                          <button
+                            className="desCart"
+                            onClick={() => dispatch(decreaseQty(item))}
+                          >
+                            <i className="fa-solid fa-minus"></i>
+                          </button>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <button
+                      className="delete"
+                      onClick={() => dispatch(deleteProduct(item))}
                     >
-                        Proceed to Checkout
-                    </Button>
-                </Box>
-            </Box>
-        </Container>
-    );
+                      <ion-icon name="close"></ion-icon>
+                    </button>
+                  </Row>
+                </div>
+              );
+            })}
+          </Col>
+          <Col md={4}>
+            <div className="cart-total">
+              <h2>Cart Summary</h2>
+              <div className=" d_flex">
+                <h4>Total Price :</h4>
+                <h3>${totalPrice}.00</h3>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
 };
 
 export default Cart;
