@@ -23,7 +23,7 @@ const AfterLogin = () => {
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 8);
 
-  const bestSales = products.filter((item) => item.category === "sofa");
+  const bestSales = products.filter((item) => item.category === "sofa ");
 
   return (
     <Fragment>
