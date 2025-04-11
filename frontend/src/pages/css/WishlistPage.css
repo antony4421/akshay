@@ -1,0 +1,124 @@
+/* General Page Styling */
+.wishlist-page {
+    background-color: #fdfdfd;
+    min-height: 100vh;
+    color: #000000;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .wishlist-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .wishlist-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00ffd5;
+  }
+  
+  /* Back Button */
+  .back-button {
+    background: linear-gradient(135deg, #3c3c3c, #1e1e1e);
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background: linear-gradient(135deg, #5c5c5c, #2e2e2e);
+    transform: scale(1.05);
+  }
+  
+  /* Wishlist Card */
+  .wishlist-card {
+    background-color: #939393;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 255, 213, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .wishlist-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .wishlist-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 20px;
+    border: 2px solid #00ffd5;
+  }
+  
+  .wishlist-card-content {
+    flex: 1;
+  }
+  
+  .wishlist-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #ffffff;
+  }
+  
+  .wishlist-card-content p {
+    font-size: 1rem;
+    color: #c0c0c0;
+    margin-bottom: 12px;
+  }
+  
+  /* Action Buttons */
+  .wishlist-actions {
+    display: flex;
+    gap: 12px;
+  }
+  
+  /* Move to Cart */
+  .move-btn {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #000;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .move-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(67, 233, 123, 0.4);
+  }
+  
+  /* Remove */
+  .remove-btn {
+    background: linear-gradient(135deg, #ff4e50, #f44336);
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .remove-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(255, 78, 80, 0.5);
+  }
+  

@@ -14,51 +14,52 @@ const Shop = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const location = useLocation();
+
+  // Extract category from URL
   const queryParams = new URLSearchParams(location.search);
-  const selectedCategory = queryParams.get("category");
+  const selectedCategory = decodeURIComponent(queryParams.get("category") || "");
 
   useWindowScrollToTop();
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const [productsRes, categoriesRes] = await Promise.all([
-        axios.get("http://localhost:8005/api/products"),
-        axios.get("http://localhost:8005/api/categories"),
-      ]);
-
-      const products = productsRes.data;
-      setAllProducts(products);
-      setCategories(categoriesRes.data);
-
-      console.log("Selected category from URL:", selectedCategory);
-      console.log("Product categories:", products.map((p) => p.category));
-
-      if (selectedCategory) {
-        const filtered = products.filter(
-          (item) =>
-            item.category?.trim().toLowerCase() ===
-            selectedCategory.trim().toLowerCase()
-        );
-        setFilterList(filtered);
-      } else {
-        setFilterList(products);
-      }
-    } catch (err) {
-      console.error("Error fetching data:", err);
-      setError("Failed to load products. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Fetch products and categories
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const [productsRes, categoriesRes] = await Promise.all([
+          axios.get("http://localhost:8005/api/products"),
+          axios.get("http://localhost:8005/api/categories"),
+        ]);
+
+        const products = productsRes.data;
+        setAllProducts(products);
+        setCategories(categoriesRes.data);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError("Failed to load products. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchData();
-  }, [location.search]);
+  }, []);
+
+  // Filter products by category
+  useEffect(() => {
+    if (!selectedCategory) {
+      setFilterList(allProducts);
+    } else {
+      const filtered = allProducts.filter(
+        (item) =>
+          item.category?.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
+      );
+      setFilterList(filtered);
+    }
+  }, [selectedCategory, allProducts]);
 
   return (
     <Fragment>

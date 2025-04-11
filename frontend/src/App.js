@@ -18,6 +18,7 @@ import CategoryManager from "./admin/CategoryManager";
 import OfferManager from "./admin/OfferManager";
 import PurchaseList from "./admin/PurchaseList";
 import AddProduct from "./admin/AddProduct";
+import WishlistPage from "./pages/WishlistPage";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -63,6 +64,7 @@ function AppWrapper() {
         <Route path="/allproduct" element={<Allproduct/>}/>
         <Route path="/update-product/:id" element={<EditProduct />} />
         <Route path="/shop/:category" element={<Shop />} />
+        <Route path="/wishlist" element={<WishlistPage/>}/>
       </Routes>
 
       <Footer />
