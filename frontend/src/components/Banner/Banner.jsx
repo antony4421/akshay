@@ -1,11 +1,18 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import productBg from "../../Images/table.jpg";
 import "./banner.css";
-const Banner = ({title}) => {
-    return ( 
+
+const Banner = ({ title }) => {
+    const navigate = useNavigate();
+
+    return (
         <div className="image-container">
-            <img src={productBg} alt="Product-bg" />
+            <img src={productBg} alt="Product-bg" className="img-fluid" />
             <div className="overlay">
+                <button className="back-button" onClick={() => navigate(-1)}>
+                    ⬅ Back
+                </button>
                 <Container>
                     <Row>
                         <Col>
@@ -16,6 +23,6 @@ const Banner = ({title}) => {
             </div>
         </div>
     );
-}
+};
 
 export default Banner;
