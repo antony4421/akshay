@@ -10,6 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/login";
 import NavBar from "./components/Navbar/Navbar";
 import Billing from "./pages/Checkout";
+import Dashboard from "./admin/dashboard";
+import CustomerList from "./admin/CustomerList";
+import Allproduct from "./admin/allproduct";
+import EditProduct from "./admin/EditProduct";
+import CategoryManager from "./admin/CategoryManager";
+import OfferManager from "./admin/OfferManager";
+import PurchaseList from "./admin/PurchaseList";
+import AddProduct from "./admin/AddProduct";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -46,6 +54,14 @@ function AppWrapper() {
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/afterlogin" element={<Afetrlogin />} />
         <Route path="/checkout" element={<Billing/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/offermanager" element={<OfferManager/>}/>
+        <Route path="/purchaselist" element={<PurchaseList/>}/>
+        <Route path="/categorymanager" element={<CategoryManager/>}/>
+        <Route path="/addproduct" element={<AddProduct/>}/>
+       <Route path="/customers" element={<CustomerList />} />
+        <Route path="/allproduct" element={<Allproduct/>}/>
+        <Route path="/update-product/:id" element={<EditProduct />} />
       </Routes>
 
       <Footer />

@@ -1,0 +1,149 @@
+.offer-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #121212;
+    color: white;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .offer-form {
+    background: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .offer-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .offer-form input {
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .offer-form button {
+    background: #61dafb;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .offer-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .offer-card {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+  }
+  
+  .offer-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .card-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+  
+  .card-buttons button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .card-buttons button:first-child {
+    background-color: #ffd700;
+    color: black;
+  }
+  
+  .card-buttons button:last-child {
+    background-color: #ff4c4c;
+    color: white;
+  }
+  
+  .offer-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .offer-form {
+    margin-bottom: 20px;
+    max-width: 400px;
+  }
+  
+  .offer-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .offer-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .offer-card {
+    background: #222;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .offer-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-buttons button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .product-search {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+  }
+  

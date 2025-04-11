@@ -1,0 +1,62 @@
+.purchase-list-container {
+    padding: 20px;
+    background: #121212;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .purchase-list-container h2 {
+    color: #00d8ff;
+    margin-bottom: 20px;
+  }
+  
+  .purchase-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1e1e1e;
+  }
+  
+  .purchase-table th,
+  .purchase-table td {
+    border: 1px solid #333;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .purchase-table th {
+    background-color: #222;
+    color: #00d8ff;
+  }
+  
+  .status-dropdown {
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+  }
+  
+  .status-dropdown.pending {
+    background-color: #ffae42;
+    color: #000;
+  }
+  
+  .status-dropdown.shipped {
+    background-color: #4da6ff;
+    color: #000;
+  }
+  
+  .status-dropdown.delivered {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .status-dropdown.cancelled {
+    background-color: #e53935;
+    color: #fff;
+  }
+  
+  .purchase-table img {
+    border-radius: 8px;
+    border: 1px solid #555;
+  }
+  
