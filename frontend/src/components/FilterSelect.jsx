@@ -1,52 +1,20 @@
 import Select from 'react-select';
-import { products } from '../utils/products';
-
-const options = [
-    { value: "sofa", label: "Sofa" },
-    { value: "chair", label: "Chair" },
-    { value: "watch", label: "Watch" },
-    { value: "mobile", label: "Mobile" },
-    { value: "wireless", label: "Wireless" },
-];
-
-const customStyles = {
-    control: (provided) => ({
-        ...provided,
-        backgroundColor: "#0f3460",
-        color: "white",
-        borderRadius: "5px",
-        border: "none",
-        boxShadow: "none",
-        width: "200px",
-        height: "40px",
-    }),
-    option: (provided, state) => ({
-        ...provided,
-        backgroundColor: state.isSelected ? "#0f3460" : "white",
-        color: state.isSelected ? "white" : "#0f3460",
-        "&:hover": {
-        backgroundColor: "#0f3460",
-        color: "white",
-        },
-    }),
-    singleValue: (provided) => ({
-        ...provided,
-        color: "white",
-    }),
-};
-
-const FilterSelect = ({setFilterList}) => {
-    const handleChange = (selectedOption)=> {
-        setFilterList(products.filter(item => item.category ===selectedOption.value))
-    }
+const FilterSelect = ({ allProducts, categories, setFilterList }) => {
+    const handleChange = (e) => {
+      const selectedCategory = e.target.value;
+      const filtered = selectedCategory === "all"
+        ? allProducts
+        : allProducts.filter(item => item.category === selectedCategory);
+      setFilterList(filtered);
+    };
+  
     return (
-    <Select
-    options={options}
-    defaultValue={{ value: "", label: "Filter By Category" }}
-    styles={customStyles}
-    onChange={handleChange}
-    />
+      <select className="form-select" onChange={handleChange}>
+        <option value="all">All Categories</option>
+        {categories.map((cat, index) => (
+          <option key={index} value={cat.name}>{cat.name}</option>
+        ))}
+      </select>
     );
-};
-
-export default FilterSelect;
+  };
+export default FilterSelect;  

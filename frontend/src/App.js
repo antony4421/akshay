@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/login";
 import NavBar from "./components/Navbar/Navbar";
+import Billing from "./pages/Checkout";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -44,6 +45,7 @@ function AppWrapper() {
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/afterlogin" element={<Afetrlogin />} />
+        <Route path="/checkout" element={<Billing/>}/>
       </Routes>
 
       <Footer />
