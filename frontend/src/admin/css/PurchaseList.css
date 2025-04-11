@@ -1,62 +1,63 @@
 .purchase-list-container {
-    padding: 20px;
-    background: #121212;
-    color: #fff;
-    min-height: 100vh;
-  }
-  
-  .purchase-list-container h2 {
-    color: #00d8ff;
-    margin-bottom: 20px;
-  }
-  
-  .purchase-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #1e1e1e;
-  }
-  
-  .purchase-table th,
-  .purchase-table td {
-    border: 1px solid #333;
-    padding: 12px;
-    text-align: center;
-  }
-  
-  .purchase-table th {
-    background-color: #222;
-    color: #00d8ff;
-  }
-  
-  .status-dropdown {
-    padding: 6px;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-  }
-  
-  .status-dropdown.pending {
-    background-color: #ffae42;
-    color: #000;
-  }
-  
-  .status-dropdown.shipped {
-    background-color: #4da6ff;
-    color: #000;
-  }
-  
-  .status-dropdown.delivered {
-    background-color: #4caf50;
-    color: #fff;
-  }
-  
-  .status-dropdown.cancelled {
-    background-color: #e53935;
-    color: #fff;
-  }
-  
-  .purchase-table img {
-    border-radius: 8px;
-    border: 1px solid #555;
-  }
-  
+  padding: 20px;
+  background: #f9fafb;
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+.purchase-list-container h2 {
+  color: #1d4ed8;
+  margin-bottom: 20px;
+}
+
+.purchase-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.purchase-table th,
+.purchase-table td {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  text-align: center;
+}
+
+.purchase-table th {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.status-dropdown {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+.status-dropdown.pending {
+  background-color: #fde68a;
+  color: #92400e;
+}
+
+.status-dropdown.shipped {
+  background-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.status-dropdown.delivered {
+  background-color: #bbf7d0;
+  color: #065f46;
+}
+
+.status-dropdown.cancelled {
+  background-color: #fecaca;
+  color: #991b1b;
+}
+
+.purchase-table img {
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}

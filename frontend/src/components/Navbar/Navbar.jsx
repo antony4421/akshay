@@ -35,7 +35,7 @@ const NavBar = () => {
       <Container className="navbar-container">
         <Navbar.Brand as={Link} to="/">
           <ion-icon name="bag"></ion-icon>
-          <h1 className="logo">SHOPO</h1>
+          <h1 className="abhi">SHOPO</h1>
         </Navbar.Brand>
 
         {/* Media cart and toggle */}

@@ -184,6 +184,7 @@
 
   .logo {
     font-size: 20px;
+    color: rgb(206, 153, 39);
   }
 
   .expanded-cart {
@@ -194,6 +195,9 @@
     display: flex;
     align-items: flex-end;
     gap: 5px;
+  }
+  .abhi{
+    color: black;
   }
   
 }
