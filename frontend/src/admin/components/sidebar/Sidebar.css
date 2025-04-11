@@ -1,11 +1,11 @@
 .sidebar {
   width: 250px;
   min-height: 100vh;
-  background-color:#12121c;
+  background-color:#d2d2d2;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
 }
@@ -15,7 +15,7 @@
   font-weight: bold;
   margin-bottom: 30px;
   text-align: center;
-  color: #f5f7ff;
+  color: #000000;
 }
 
 .sidebar-menu {
@@ -35,7 +35,7 @@
 
 .sidebar-menu li a {
   text-decoration: none;
-  color: #f5f7ff;
+  color: #111111;
   display: block;
   font-size: 16px;
 }

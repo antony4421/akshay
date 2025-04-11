@@ -6,41 +6,65 @@ import axios from "axios";
 import ShopList from "../components/ShopList";
 import Banner from "../components/Banner/Banner";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+import { useLocation } from "react-router-dom";
 
 const Shop = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedCategory = queryParams.get("category");
 
   useWindowScrollToTop();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [productsRes, categoriesRes] = await Promise.all([
-          axios.get("http://localhost:8005/api/products"),
-          axios.get("http://localhost:8005/api/categories"),
-        ]);
-        setAllProducts(productsRes.data);
-        setFilterList(productsRes.data); // default view: show all products
-        setCategories(categoriesRes.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
+      const [productsRes, categoriesRes] = await Promise.all([
+        axios.get("http://localhost:8005/api/products"),
+        axios.get("http://localhost:8005/api/categories"),
+      ]);
+
+      const products = productsRes.data;
+      setAllProducts(products);
+      setCategories(categoriesRes.data);
+
+      console.log("Selected category from URL:", selectedCategory);
+      console.log("Product categories:", products.map((p) => p.category));
+
+      if (selectedCategory) {
+        const filtered = products.filter(
+          (item) =>
+            item.category?.trim().toLowerCase() ===
+            selectedCategory.trim().toLowerCase()
+        );
+        setFilterList(filtered);
+      } else {
+        setFilterList(products);
+      }
+    } catch (err) {
+      console.error("Error fetching data:", err);
+      setError("Failed to load products. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [location.search]);
 
   return (
     <Fragment>
       <Banner title="product" />
       <section className="filter-bar">
-        <Container className="filter-bar-contianer">
+        <Container className="filter-bar-container">
           <Row className="justify-content-center">
             <Col md={4}>
               <FilterSelect
@@ -56,10 +80,12 @@ const Shop = () => {
               />
             </Col>
           </Row>
-        </Container>
 
-        <Container>
-          {loading ? (
+          {error ? (
+            <div className="text-center text-danger my-5">
+              <p>{error}</p>
+            </div>
+          ) : loading ? (
             <div className="text-center my-5">
               <Spinner animation="border" variant="primary" />
               <p>Loading products...</p>

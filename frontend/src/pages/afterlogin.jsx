@@ -5,7 +5,7 @@ import SliderHome from "../components/Slider";
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
 import NavBar from "./components/Navbar/Navbar";
 import DiscountCategorySection from "./components/DiscountCategorySection";
-
+import Offers from "./components/offers";
 const AfterLogin = () => {
   const [products, setProducts] = useState([]);
 
@@ -31,12 +31,7 @@ const AfterLogin = () => {
       <SliderHome />
       <Wrapper />
       <DiscountCategorySection />
-      <Section
-        title="Top products"
-        bgColor="white"
-        productItems={newArrivalData}
-      />
-      <Section title="BEST SALES" bgColor="#f6f9fc" productItems={bestSales} />
+      <Offers/>
     </Fragment>
   );
 };

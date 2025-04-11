@@ -62,6 +62,7 @@ function AppWrapper() {
        <Route path="/customers" element={<CustomerList />} />
         <Route path="/allproduct" element={<Allproduct/>}/>
         <Route path="/update-product/:id" element={<EditProduct />} />
+        <Route path="/shop/:category" element={<Shop />} />
       </Routes>
 
       <Footer />
