@@ -110,7 +110,7 @@ function Dashboard() {
       <main className="dashboard-main">
         <header className="dashboard-header">
           <h1>Dashboard</h1>
-          <div className="user-info">Welcome, Rebel!</div>
+          <div className="user-info">Welcome, Akshay</div>
         </header>
 
         <Overview /> {/* ✅ Added Overview section */}
