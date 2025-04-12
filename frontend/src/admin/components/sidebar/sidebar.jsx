@@ -6,7 +6,7 @@ import './Sidebar.css'; // Optional, for custom styles
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <h2 className="logo">PREMIUM</h2>
+      <h2 className="logo">SHOPO</h2>
       <ul className="sidebar-menu">
         <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/customers">Users</Link></li>
