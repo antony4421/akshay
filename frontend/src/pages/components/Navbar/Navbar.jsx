@@ -112,10 +112,10 @@ const NavBar = () => {
               <Link
                 aria-label="Go to Login Page"
                 className="navbar-link"
-                to="/login"
+                to="/profile"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Logout</span>
+                <span className="nav-link-label">profile</span>
               </Link>
             </Nav.Item>
 

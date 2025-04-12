@@ -19,6 +19,8 @@ import OfferManager from "./admin/OfferManager";
 import PurchaseList from "./admin/PurchaseList";
 import AddProduct from "./admin/AddProduct";
 import WishlistPage from "./pages/WishlistPage";
+import ProfileInfo from "./pages/profile";
+import OrderDetails from "./pages/myorder";
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -65,6 +67,8 @@ function AppWrapper() {
         <Route path="/update-product/:id" element={<EditProduct />} />
         <Route path="/shop/:category" element={<Shop />} />
         <Route path="/wishlist" element={<WishlistPage/>}/>
+        <Route path="/profile" element={<ProfileInfo/>}/>
+        <Route path="/myorder" element={<OrderDetails/>}/>
       </Routes>
 
       <Footer />
